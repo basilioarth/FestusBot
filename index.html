@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html len="en">
+<head>
+  <meta charset="utf-8">
+  <title>FestusBot</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="container">
+  <h1 class="text-center">Hi!</h1>
+	<input type="text" id="mensagem" name="mensagem">
+	<p class="text-center">
+		<button type="button" onclick="sendMessage()">Send Message</button>
+	</p>
+</div>
+
+<script>
+	var msg;
+
+	function sendMessage(){
+		const xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+
+		xhr.addEventListener("readystatechange", function () {
+		if (this.readyState === this.DONE) {
+			console.log(JSON.parse(this.responseText).cnt);
+		}
+		});
+		msg = document.getElementById("mensagem").value;
+		if(msg === "") msg = "Hello!";
+		console.log(msg);
+		
+		xhr.open("GET", `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=155655&key=84YBs1lzrJviXfDK&uid=mashape&msg=${msg}`);
+		xhr.setRequestHeader("x-rapidapi-key", "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd");
+		xhr.setRequestHeader("x-rapidapi-host", "acobot-brainshop-ai-v1.p.rapidapi.com");
+
+		xhr.send();
+	}
+</script>
+</body>
+</html>
+
+<!--
+fetch("https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=155655&key=84YBs1lzrJviXfDK&uid=mashape&msg=Hello!", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd",
+		"x-rapidapi-host": "acobot-brainshop-ai-v1.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+-->

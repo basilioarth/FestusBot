@@ -1,0 +1,61 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    background: #3023ae;
+    background: -moz-linear-gradient(60deg, #3023ae 0%, #c86dd7 100%);
+    background: -webkit-linear-gradient(60deg, #3023ae, #c86dd7 100%);
+    background: linear-gradient(60deg, #3023ae 0%, #c86dd7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3023ae', endColorstr='#c86dd7', GradientType=1);
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    font-size: 5em;
+    text-shadow: 3px 5px #000;
+}
+
+#container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    line-height: 50px;
+    text-indent: 10px;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 1em;
+    float: right;
+    opacity: 0.6;
+    transition: opacity 1s;
+}
+
+button:hover {
+    opacity: 1;
+    transition: opacity 2s;
+}
