@@ -117,19 +117,19 @@ body {
     margin-bottom: 10px;
     overflow-y: scroll;
     height: 30vh;
-    background-color: black;
+    /*background-color: black;*/
 }
 
 .message-data {
     margin-bottom: 10px;
-    background-color: pink;
-    margin-right: 50%;
+    /*background-color: pink;
+    margin-right: 50%;*/
 }
 
 .message-data-align-right {
     margin-bottom: 10px;
-    background-color: pink;
-    margin-left: 50%;
+    /*background-color: pink;
+    margin-left: 50%;*/
 }
 
 .message-data-time {
@@ -161,7 +161,7 @@ body {
     border-bottom-color: #86BB71;
     border-width: 10px;
     margin-left: -10px;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .my-message {
