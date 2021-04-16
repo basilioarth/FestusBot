@@ -1,183 +1,207 @@
 <!DOCTYPE html>
 <html len="en">
 <head>
-  <meta charset="utf-8">
-  <title>FestusBot</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<title>FestusBot</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <div class="container clearfix">
-    
-    <div class="chat">
-      
-      <div class="chat-history">
-        <ul>
-          <li class="clearfix">
-            <div class="message-data align-right">
-              <!--<span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;-->
-              <span class="message-data-name" >You</span> <i class="fa fa-circle me"></i>
-              
-            </div>
-            <div class="message other-message float-right">
-              Hi Vincent, how are you? How is the project coming along?
-            </div>
-          </li>
-          
-          <li>
-            <div class="message-data align-left">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
-              <!--<span class="message-data-time">10:12 AM, Today</span>-->
-            </div>
-            <div class="message my-message">
-              Are we meeting today? Project has been already finished and I have results to show you.
-            </div>
-          </li>
-          
-          <li>
-            <div class="message-data align-left">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
-              <!--<span class="message-data-time">10:31 AM, Today</span>-->
-            </div>
-			  <i class="fa fa-circle online"></i>
-			  <i class="fa fa-circle online" style="color: #AED2A6"></i>
-			  <i class="fa fa-circle online" style="color:#DAE9DA"></i>
-          </li>
-          
-        </ul>
-        
-      </div> <!-- end chat-history -->
-		<div class="chat-message">
-			<textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-			<div class="chat-message-options">
-				<div class="lenguage-options">
-					<input id="br" class="not-selected" type="image" src="br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
-					<input id="en" class="selected" type="image" src="en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
-				</div>
-				<button onclick="sendMessage()">Send</button>
-			</div>
-		</div> <!-- end chat-message -->
-	
-	</div> <!-- end chat -->
+<div class="chat">
+<div class="chat-history">
+    <ul id="list-of-messages">
+    <!--
+    <li>
+    <div class="message-data align-left">
+    <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
+    <span class="message-data-time">10:31 AM, Today</span>
+    </div>
+    <i class="fa fa-circle online"></i>
+    <i class="fa fa-circle online" style="color: #AED2A6"></i>
+    <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+    </li>
+    -->
+    </ul>
+</div> <!-- end chat-history -->
+    <div class="chat-message">
+    <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+    <div class="chat-message-options">
+        <div class="lenguage-options">
+        <input id="br" class="not-selected" type="image" src="br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
+        <input id="en" class="selected" type="image" src="en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
+        </div>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    </div> <!-- end chat-message -->
+
+</div> <!-- end chat -->
 
 </div> <!-- end container -->
 
 <script>
 
-	function handleChangeLanguage(){
-		var br_language = document.getElementById("br")
-		var en_language = document.getElementById("en")
+function handleChangeLanguage(){
+    var br_language = document.getElementById("br")
+    var en_language = document.getElementById("en")
 
-		br_language.getAttribute("class") === "selected" ? br_language.setAttribute("class", "not-selected") : br_language.setAttribute("class", "selected")
-		en_language.getAttribute("class") === "selected" ? en_language.setAttribute("class", "not-selected") : en_language.setAttribute("class", "selected")
-	}
+    br_language.getAttribute("class") === "selected" ? br_language.setAttribute("class", "not-selected") : br_language.setAttribute("class", "selected")
+    en_language.getAttribute("class") === "selected" ? en_language.setAttribute("class", "not-selected") : en_language.setAttribute("class", "selected")
+}
 
-	//getWheather();
-	var newMessage = ""; 
+//getWheather();
+var newMessage = "";
+var list = "";
+var chatList = "";
 
-	function callAPI(method, url, key, host, data, type, isAsynchronous, callBackFunction){
-		const xhr = new XMLHttpRequest();
-		xhr.withCredentials = false;
+function callAPI(method, url, key, host, data, type, isAsynchronous, callBackFunction){
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
 
-		xhr.addEventListener("readystatechange", function () {
-		if (this.readyState === this.DONE) {
-			callBackFunction(JSON.parse(this.responseText));
-		}
-		});
-		
-		xhr.open(method, url, isAsynchronous);
-		type !== null && xhr.setRequestHeader("content-type", type);
-		xhr.setRequestHeader("x-rapidapi-key", key);
-		xhr.setRequestHeader("x-rapidapi-host", host);
+    xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+    callBackFunction(JSON.parse(this.responseText));
+    }
+    });
+    
+    xhr.open(method, url, isAsynchronous);
+    type !== null && xhr.setRequestHeader("content-type", type);
+    xhr.setRequestHeader("x-rapidapi-key", key);
+    xhr.setRequestHeader("x-rapidapi-host", host);
 
-		xhr.send(data);
-	}
+    xhr.send(data);
+}
 
-	function getWheather() {
+function getWheather() {
 
-		url = "https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=-42.76648670223101&lat=-5.036624815987793&units=metric&lang=pt"
-		key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
-		host = "weatherbit-v1-mashape.p.rapidapi.com"
-		method = "GET"
+    url = "https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=-42.76648670223101&lat=-5.036624815987793&units=metric&lang=pt"
+    key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
+    host = "weatherbit-v1-mashape.p.rapidapi.com"
+    method = "GET"
 
-		callAPI(method, url, key, host, null, null, true, handleWheatherChange)
-	}
+    callAPI(method, url, key, host, null, null, true, handleWheatherChange)
+}
 
-	function handleWheatherChange(response){
-		console.log(response.data[0].city_name);
-		console.log(response.data[0].country_code);
-		console.log(response.data[0].ob_time);
-		console.log(response.data[0].timezone);
-		console.log(response.data[0].temp);
-		console.log(response.data[0].weather.description);
-	}
+function handleWheatherChange(response){
+    console.log(response.data[0].city_name);
+    console.log(response.data[0].country_code);
+    console.log(response.data[0].ob_time);
+    console.log(response.data[0].timezone);
+    console.log(response.data[0].temp);
+    console.log(response.data[0].weather.description);
+}
 
-	function sendMessage(){
-		newMessage = document.getElementById("message-to-send").value;
-		document.getElementById("message-to-send").value = "";
+function sendMessage(){
+    newMessage = document.getElementById("message-to-send").value;
+    document.getElementById("message-to-send").value = "";
 
-		if(document.getElementById("br").getAttribute("class") === "selected"){
-			translateMessage(newMessage, "en", "pt");
-		} 
-			url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=155655&key=84YBs1lzrJviXfDK&uid=mashape&msg=${newMessage}`;
-			key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
-			host = "acobot-brainshop-ai-v1.p.rapidapi.com"
-			method = "GET"
+    list = document.getElementById("list-of-messages").innerHTML;
+    list = list + 
+    "<li class='clearfix'>" +
+        "<div class='message-data align-right'>" +
+        "<span class='message-data-name'>You</span> <i class='fa fa-circle me'></i>" +
+        "</div>"+
+        "<div class='message other-message float-right'>"
+        +newMessage+
+        "</div>"+
+    "</li>"
+    document.getElementById("list-of-messages").innerHTML = list;
 
-			callAPI(method, url, key, host, null, null, true, handleIaResponse);
-		
-	}
+    chatList = document.getElementsByClassName("chat-history");
+    chatList.scrollTop = chatList.scrollHeight;
 
-	function handleIaResponse(response){
-		console.log("Resposta da IA: ")
-		console.log(response.cnt)
-		if(document.getElementById("br").getAttribute("class") === "selected"){
-			translateMessage(response.cnt, "pt", "en");
-			console.log("Mensagem final: ");
-			console.log(newMessage);
-		} else {
-			console.log("Mensagem final: ");
-			console.log(response.cnt);
-		}
-	}
+    if(document.getElementById("br").getAttribute("class") === "selected"){
+    translateMessage(newMessage, "en", "pt");
+    } 
+    url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=155655&key=84YBs1lzrJviXfDK&uid=mashape&msg=${newMessage}`;
+    key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
+    host = "acobot-brainshop-ai-v1.p.rapidapi.com"
+    method = "GET"
 
-	function formatMessage(message, tl, sl){
-		var msg = "";
-		if(message === "") {
-			msg = `text=Olá&tl=${en}&sl=${sl}`
-		} else {
-			message = message.split(" ");
-			msg = "text=";
-			for(index = 0; index < (message.length - 1); index++){
-				msg = msg + message[index] + "%20";
-			}
-			msg = msg + message[index] + `&tl=${tl}&l=${sl}`;
- 		}
+    callAPI(method, url, key, host, null, null, true, handleIaResponse);
+    
+}
 
-		return msg;
-	}
+function handleIaResponse(response){
+    console.log("Resposta da IA: ")
+    console.log(response.cnt)
+    if(document.getElementById("br").getAttribute("class") === "selected"){
+    translateMessage(response.cnt, "pt", "en");
+    console.log("Mensagem final: ");
+    console.log(newMessage);
 
-	function translateMessage(message, tl, sl){
+    list = document.getElementById("list-of-messages").innerHTML;
+    list = list + 
+    "<li>" +
+        "<div class='message-data align-left'>" +
+        "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
+        "</div>" +
+        "<div class='message my-message'>"
+        +newMessage+
+        "</div>"+
+    "</li>"
+    document.getElementById("list-of-messages").innerHTML = list;
 
-		method = "POST"
-		url = "https://google-translate20.p.rapidapi.com/translate"
-		key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
-		host = "google-translate20.p.rapidapi.com"
-		data = formatMessage(message, tl, sl);
-		type = "application/x-www-form-urlencoded"
-	
-		callAPI(method, url, key, host, data, type, false, handleTranslationResponse);
-	}
+    chatList = document.getElementsByClassName("chat-history");
+    chatList.scrollTop = chatList.scrollHeight;
+    } else {
+    console.log("Mensagem final: ");
+    console.log(response.cnt);
 
-	function handleTranslationResponse(response){
-		console.log("Tradução: ");
-		console.log(response.data.translation);
-		newMessage = response.data.translation;
-	}
+    list = document.getElementById("list-of-messages").innerHTML;
+    list = list + 
+    "<li>" +
+        "<div class='message-data align-left'>" +
+        "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
+        "</div>" +
+        "<div class='message my-message'>"
+        +response.cnt+
+        "</div>"+
+    "</li>"
+    document.getElementById("list-of-messages").innerHTML = list;
+
+    chatList = document.getElementsByClassName("chat-history");
+    chatList.scrollTop = chatList.scrollHeight;
+    }
+}
+
+function formatMessage(message, tl, sl){
+    var msg = "";
+    if(message === "") {
+    msg = `text=Olá&tl=${en}&sl=${sl}`
+    } else {
+    message = message.split(" ");
+    msg = "text=";
+    for(index = 0; index < (message.length - 1); index++){
+        msg = msg + message[index] + "%20";
+    }
+    msg = msg + message[index] + `&tl=${tl}&l=${sl}`;
+    }
+
+    return msg;
+}
+
+function translateMessage(message, tl, sl){
+
+    method = "POST"
+    url = "https://google-translate20.p.rapidapi.com/translate"
+    key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
+    host = "google-translate20.p.rapidapi.com"
+    data = formatMessage(message, tl, sl);
+    type = "application/x-www-form-urlencoded"
+
+    callAPI(method, url, key, host, data, type, false, handleTranslationResponse);
+}
+
+function handleTranslationResponse(response){
+    console.log("Tradução: ");
+    console.log(response.data.translation);
+    newMessage = response.data.translation;
+}
 </script>
 </body>
 </html>
