@@ -9,43 +9,48 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
-<!--
-<div id="container">
-  <h1 class="text-center">Hi!</h1>
-	<input type="text" id="mensagem" name="mensagem">
-	<p class="text-center">
-		<button type="button" onclick="sendMessage()">Send Message</button>
-	</p>
-</div>
--->
+<body>
 <div class="container clearfix">
+    
     <div class="chat">
-		<div  class="chat-history">
-			<ul>
-				<li class="clearfix">
-					<div class="message-data-align-right">
-					  <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
-					  <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-					  
-					</div>
-					<div class="message other-message float-right">
-					  Hi Vincent, how are you? How is the project coming along?
-					</div>
-				</li>
-				  
-				<li>
-					<div class="message-data">
-					  <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-					  <span class="message-data-time">10:12 AM, Today</span>
-					</div>
-					<div class="message my-message">
-					  Are we meeting today? Project has been already finished and I have results to show you.
-					</div>
-				</li>
-			</ul>
-		</div> <!-- end chat-history -->
+      
+      <div class="chat-history">
+        <ul>
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <!--<span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;-->
+              <span class="message-data-name" >You</span> <i class="fa fa-circle me"></i>
+              
+            </div>
+            <div class="message other-message float-right">
+              Hi Vincent, how are you? How is the project coming along?
+            </div>
+          </li>
+          
+          <li>
+            <div class="message-data align-left">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
+              <!--<span class="message-data-time">10:12 AM, Today</span>-->
+            </div>
+            <div class="message my-message">
+              Are we meeting today? Project has been already finished and I have results to show you.
+            </div>
+          </li>
+          
+          <li>
+            <div class="message-data align-left">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
+              <!--<span class="message-data-time">10:31 AM, Today</span>-->
+            </div>
+			  <i class="fa fa-circle online"></i>
+			  <i class="fa fa-circle online" style="color: #AED2A6"></i>
+			  <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+          </li>
+          
+        </ul>
+        
+      </div> <!-- end chat-history -->
 		<div class="chat-message">
 			<textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
 			<div class="chat-message-options">
@@ -71,7 +76,7 @@
 		en_language.getAttribute("class") === "selected" ? en_language.setAttribute("class", "not-selected") : en_language.setAttribute("class", "selected")
 	}
 
-	getWheather();
+	//getWheather();
 	var newMessage = ""; 
 
 	function callAPI(method, url, key, host, data, type, isAsynchronous, callBackFunction){
@@ -140,7 +145,7 @@
 		}
 	}
 
-	function formatMesssage(message, tl, sl){
+	function formatMessage(message, tl, sl){
 		var msg = "";
 		if(message === "") {
 			msg = `text=Olá&tl=${en}&sl=${sl}`
@@ -162,7 +167,7 @@
 		url = "https://google-translate20.p.rapidapi.com/translate"
 		key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
 		host = "google-translate20.p.rapidapi.com"
-		data = formatMesssage(message, tl, sl);
+		data = formatMessage(message, tl, sl);
 		type = "application/x-www-form-urlencoded"
 	
 		callAPI(method, url, key, host, data, type, false, handleTranslationResponse);

@@ -1,80 +1,3 @@
-/*
-body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    text-align: center;
-    background: #3023ae;
-    background: -moz-linear-gradient(60deg, #3023ae 0%, #c86dd7 100%);
-    background: -webkit-linear-gradient(60deg, #3023ae, #c86dd7 100%);
-    background: linear-gradient(60deg, #3023ae 0%, #c86dd7 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3023ae', endColorstr='#c86dd7', GradientType=1);
-}
-
-
-.title {
-    font-family: 'Dancing Script', cursive;
-    color: #fff;
-    font-size: 5em;
-    text-shadow: 3px 5px #000;
-}
-
-#container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-    margin: 0 auto;
-    width: 750px;
-    background: #444753;
-    border-radius: 5px;
-  }
-
-.text-center {
-    text-align: center;
-}
-
-input {
-    width: 100%;
-    line-height: 50px;
-    text-indent: 10px;
-    font-size: 1.2em;
-    border-radius: 10px;
-}
-
-button {
-    width: 100%;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: #000;
-    border: none;
-    color: #fff;
-    border-radius: 30px;
-    font-size: 1em;
-    float: right;
-    opacity: 0.6;
-    transition: opacity 1s;
-}
-
-button:hover {
-    opacity: 1;
-    transition: opacity 2s;
-}
-
-button:focus, input:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-}
-*/
-
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -88,6 +11,43 @@ body {
     font: 14px/20px "Lato", Arial, sans-serif;
     padding: 40px 0;
     color: white;
+}
+
+li {
+    list-style: none;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+    padding: 10px;
+}
+
+button {
+    background-color: transparent;
+    color: #434651;
+    font-size: 1.3em;
+    float: right;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: lighter;
+    opacity: 0.6;
+    transition: opacity 1s;
+}
+
+button:hover {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+button:focus, textarea:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }
   
 .container {
@@ -106,6 +66,25 @@ body {
     color: #434651;
     padding: 30px;
 
+}
+
+.chat-history {
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    height: 30vh;
+}
+
+.message-data {
+    margin-bottom: 10px;
+}
+
+.message-data-align-right {
+    margin-bottom: 10px;
+}
+
+.message-data-time {
+    color: lighten(#92959E, 8%);
+    padding-left: 6px;
 }
 
 .chat-massage {
@@ -127,31 +106,6 @@ body {
 .lenguage-options>input.not-selected {
     box-shadow: 0 0 0 0;
     outline: 0;
-}
-
-.chat-history {
-    /*padding: 30px 30px 20px;*/
-    margin-bottom: 10px;
-    overflow-y: scroll;
-    height: 30vh;
-    /*background-color: black;*/
-}
-
-.message-data {
-    margin-bottom: 10px;
-    /*background-color: pink;
-    margin-right: 50%;*/
-}
-
-.message-data-align-right {
-    margin-bottom: 10px;
-    /*background-color: pink;
-    margin-left: 50%;*/
-}
-
-.message-data-time {
-    color: lighten(#92959E, 8%);
-    padding-left: 6px;
 }
   
 .message {      
@@ -195,39 +149,40 @@ body {
     left: 93%;
 }
 
-li {
-    list-style: none;
+.online, .offline, .me {
+    margin-right: 3px;
+    font-size: 10px;
+  }
+  
+.online {
+  color: #86BB71;
+}
+  
+.offline {
+  color: orange;
 }
 
-textarea {
-    width: 100%;
-    border: none;
-    font: 14px/22px "Lato", Arial, sans-serif;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    resize: none;
-    padding: 10px;
+.me {
+  color: #94C2ED;
 }
 
-button {
-    background-color: transparent;
-    color: #434651;
-    font-size: 1.3em;
-    float: right;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    font-weight: lighter;
-    opacity: 0.6;
-    transition: opacity 1s;
+.align-left {
+  text-align: left;
 }
 
-button:hover {
-    opacity: 1;
-    transition: opacity 2s;
+.align-right {
+  text-align: right;
 }
 
-button:focus, textarea:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }
