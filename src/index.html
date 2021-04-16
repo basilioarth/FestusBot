@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>FestusBot</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="icon" type="image/x-icon" href="../assets/icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
@@ -12,28 +13,21 @@
 
 <body>
 <div class="container clearfix">
+<div class="header">
+    <input class="icon" type="image" src="../assets/icon.png" alt="FestusBotIcon">
+</div>
 <div class="chat">
-<div class="chat-history">
+<div id="chat-history" class="chat-history">
     <ul id="list-of-messages">
-    <!--
-    <li>
-    <div class="message-data align-left">
-    <span class="message-data-name"><i class="fa fa-circle online"></i> Festus</span>
-    <span class="message-data-time">10:31 AM, Today</span>
-    </div>
-    <i class="fa fa-circle online"></i>
-    <i class="fa fa-circle online" style="color: #AED2A6"></i>
-    <i class="fa fa-circle online" style="color:#DAE9DA"></i>
-    </li>
-    -->
+        <!-- New messages will be set here -->
     </ul>
 </div> <!-- end chat-history -->
     <div class="chat-message">
     <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
     <div class="chat-message-options">
         <div class="lenguage-options">
-        <input id="br" class="not-selected" type="image" src="br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
-        <input id="en" class="selected" type="image" src="en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
+        <input id="br" class="not-selected" type="image" src="../assets/br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
+        <input id="en" class="selected" type="image" src="../assets/en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
         </div>
         <button onclick="sendMessage()">Send</button>
     </div>
@@ -111,7 +105,7 @@ function sendMessage(){
     "</li>"
     document.getElementById("list-of-messages").innerHTML = list;
 
-    chatList = document.getElementsByClassName("chat-history");
+    chatList = document.getElementById("chat-history");
     chatList.scrollTop = chatList.scrollHeight;
 
     if(document.getElementById("br").getAttribute("class") === "selected"){
@@ -136,7 +130,7 @@ function handleIaResponse(response){
 
     list = document.getElementById("list-of-messages").innerHTML;
     list = list + 
-    "<li>" +
+    "<li class='clearfix'>" +
         "<div class='message-data align-left'>" +
         "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
         "</div>" +
@@ -146,7 +140,7 @@ function handleIaResponse(response){
     "</li>"
     document.getElementById("list-of-messages").innerHTML = list;
 
-    chatList = document.getElementsByClassName("chat-history");
+    chatList = document.getElementById("chat-history");
     chatList.scrollTop = chatList.scrollHeight;
     } else {
     console.log("Mensagem final: ");
@@ -154,7 +148,7 @@ function handleIaResponse(response){
 
     list = document.getElementById("list-of-messages").innerHTML;
     list = list + 
-    "<li>" +
+    "<li class='clearfix'>" +
         "<div class='message-data align-left'>" +
         "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
         "</div>" +
@@ -164,7 +158,7 @@ function handleIaResponse(response){
     "</li>"
     document.getElementById("list-of-messages").innerHTML = list;
 
-    chatList = document.getElementsByClassName("chat-history");
+    chatList = document.getElementById("chat-history");
     chatList.scrollTop = chatList.scrollHeight;
     }
 }

@@ -50,12 +50,38 @@ button:focus, textarea:focus {
     outline: 0;
 }
 
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+.header {
+    background-color: transparent;
+    width: 490px;
+    height: 200px;
+    padding: 0;
+}
+
+.icon {
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+}
+
 .container {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
 }
 
 .chat {
@@ -72,7 +98,6 @@ button:focus, textarea:focus {
     margin-bottom: 10px;
     overflow-y: scroll;
     height: 30vh;
-    scroll-behavior: auto;
 }
 
 .message-data {
