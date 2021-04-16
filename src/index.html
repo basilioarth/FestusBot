@@ -47,7 +47,6 @@ function handleChangeLanguage(){
     en_language.getAttribute("class") === "selected" ? en_language.setAttribute("class", "not-selected") : en_language.setAttribute("class", "selected")
 }
 
-//getWheather();
 var newMessage = "";
 var list = "";
 var chatList = "";
@@ -70,33 +69,16 @@ function callAPI(method, url, key, host, data, type, isAsynchronous, callBackFun
     xhr.send(data);
 }
 
-function getWheather() {
-
-    url = "https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=-42.76648670223101&lat=-5.036624815987793&units=metric&lang=pt"
-    key = "1952e6412cmsh9e8575a205305e5p1ddf0djsn430e2c8013dd"
-    host = "weatherbit-v1-mashape.p.rapidapi.com"
-    method = "GET"
-
-    callAPI(method, url, key, host, null, null, true, handleWheatherChange)
-}
-
-function handleWheatherChange(response){
-    console.log(response.data[0].city_name);
-    console.log(response.data[0].country_code);
-    console.log(response.data[0].ob_time);
-    console.log(response.data[0].timezone);
-    console.log(response.data[0].temp);
-    console.log(response.data[0].weather.description);
-}
-
 function sendMessage(){
     newMessage = document.getElementById("message-to-send").value;
     document.getElementById("message-to-send").value = "";
 
+    var data = new Date().toLocaleString('en', { timeZone: 'America/Fortaleza' }).split(",");
     list = document.getElementById("list-of-messages").innerHTML;
     list = list + 
     "<li class='clearfix'>" +
         "<div class='message-data align-right'>" +
+        "<span class='message-data-time'>" + data[1] + ", Today</span> &nbsp; &nbsp;" +
         "<span class='message-data-name'>You</span> <i class='fa fa-circle me'></i>" +
         "</div>"+
         "<div class='message other-message float-right'>"
@@ -128,11 +110,13 @@ function handleIaResponse(response){
     console.log("Mensagem final: ");
     console.log(newMessage);
 
+    var data = new Date().toLocaleString('en', { timeZone: 'America/Fortaleza' }).split(",");
     list = document.getElementById("list-of-messages").innerHTML;
     list = list + 
     "<li class='clearfix'>" +
         "<div class='message-data align-left'>" +
         "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
+        "<span class='message-data-time'>" + data[1] + ", Today</span>" +
         "</div>" +
         "<div class='message my-message'>"
         +newMessage+
@@ -146,11 +130,13 @@ function handleIaResponse(response){
     console.log("Mensagem final: ");
     console.log(response.cnt);
 
+    var data = new Date().toLocaleString('en', { timeZone: 'America/Fortaleza' }).split(",");
     list = document.getElementById("list-of-messages").innerHTML;
     list = list + 
     "<li class='clearfix'>" +
         "<div class='message-data align-left'>" +
         "<span class='message-data-name'><i class='fa fa-circle online'></i> Festus</span>" +
+        "<span class='message-data-time'>" + data[1] + ", Today</span>" +
         "</div>" +
         "<div class='message my-message'>"
         +response.cnt+
