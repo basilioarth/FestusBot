@@ -112,6 +112,23 @@ body {
     padding: 30px;
 }
 
+.chat-message-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lenguage-options>input.selected {
+    border-radius: 3px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.lenguage-options>input.not-selected {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
 .chat-history {
     /*padding: 30px 30px 20px;*/
     margin-bottom: 10px;
@@ -193,13 +210,12 @@ textarea {
 }
 
 button {
-    background-color: #434651;
-    color: #F2F5F8;
+    background-color: transparent;
+    color: #434651;
     font-size: 1.3em;
     float: right;
     text-transform: uppercase;
     border: none;
-    border-radius: 30px;
     cursor: pointer;
     font-weight: lighter;
     opacity: 0.6;
