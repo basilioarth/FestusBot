@@ -103,12 +103,12 @@ function sendMessage(){
 }
 
 function handleIaResponse(response){
-    console.log("Resposta da IA: ")
-    console.log(response.cnt)
+    //console.log("Resposta da IA: ")
+    //console.log(response.cnt)
     if(document.getElementById("br").getAttribute("class") === "selected"){
     translateMessage(response.cnt, "pt", "en");
-    console.log("Mensagem final: ");
-    console.log(newMessage);
+    //console.log("Mensagem final: ");
+    //console.log(newMessage);
 
     var data = new Date().toLocaleString('en', { timeZone: 'America/Fortaleza' }).split(",");
     list = document.getElementById("list-of-messages").innerHTML;
@@ -127,8 +127,8 @@ function handleIaResponse(response){
     chatList = document.getElementById("chat-history");
     chatList.scrollTop = chatList.scrollHeight;
     } else {
-    console.log("Mensagem final: ");
-    console.log(response.cnt);
+    //console.log("Mensagem final: ");
+    //console.log(response.cnt);
 
     var data = new Date().toLocaleString('en', { timeZone: 'America/Fortaleza' }).split(",");
     list = document.getElementById("list-of-messages").innerHTML;
@@ -178,8 +178,8 @@ function translateMessage(message, tl, sl){
 }
 
 function handleTranslationResponse(response){
-    console.log("Tradução: ");
-    console.log(response.data.translation);
+    //console.log("Tradução: ");
+    //console.log(response.data.translation);
     newMessage = response.data.translation;
 }
 </script>
