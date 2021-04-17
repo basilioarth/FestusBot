@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html len="en">
 <head>
-<meta charset="utf-8">
-<title>FestusBot</title>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="icon" type="image/x-icon" href="../assets/icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>FestusBot</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" type="image/x-icon" href="../assets/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <div class="container clearfix">
-<div class="header">
-    <input class="icon" type="image" src="../assets/icon.png" alt="FestusBotIcon">
-</div>
-<div class="chat">
-<div id="chat-history" class="chat-history">
-    <ul id="list-of-messages">
-        <!-- New messages will be set here -->
-    </ul>
-</div> <!-- end chat-history -->
-    <div class="chat-message">
-    <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-    <div class="chat-message-options">
-        <div class="lenguage-options">
-        <input id="br" class="not-selected" type="image" src="../assets/br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
-        <input id="en" class="selected" type="image" src="../assets/en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
-        </div>
-        <button onclick="sendMessage()">Send</button>
-    </div>
-    </div> <!-- end chat-message -->
-
-</div> <!-- end chat -->
-
+    <div class="header">
+        <input class="icon" type="image" src="../assets/icon.png" alt="FestusBotIcon">
+    </div> <!-- end header -->
+    <div class="chat">
+        <div id="chat-history" class="chat-history">
+            <ul id="list-of-messages">
+                <!-- New messages will be set here -->
+            </ul>
+        </div> <!-- end chat-history -->
+            <div class="chat-message">
+                <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+                <div class="chat-message-options">
+                    <div class="lenguage-options">
+                    <input id="br" class="not-selected" type="image" src="../assets/br.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">
+                    <input id="en" class="selected" type="image" src="../assets/en.jpg" alt="Submit" width="40" height="40" onclick="handleChangeLanguage()">	
+                    </div>
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div> <!-- end chat-message -->
+    </div> <!-- end chat -->
 </div> <!-- end container -->
 
 <script>
-
 function handleChangeLanguage(){
     var br_language = document.getElementById("br")
     var en_language = document.getElementById("en")
